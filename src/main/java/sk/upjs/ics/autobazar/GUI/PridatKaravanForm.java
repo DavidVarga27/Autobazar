@@ -6,8 +6,14 @@
 package sk.upjs.ics.autobazar.GUI;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Instant;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -290,6 +296,15 @@ public class PridatKaravanForm extends javax.swing.JDialog {
         i.setTyp(typTextField.getText());
         i.setHmotnost(hmotnostCheckBox.isSelected());
         i.setIdP(idP);
+        Path path = Paths.get(obrazokTextField.getText());
+        try {
+            byte[] file = Files.readAllBytes(path);
+            i.setObrazok(file);
+        } catch (IOException ex) {
+            Logger.getLogger(PridatKaravanForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
 
         inzeratDao4.pridat(i);
         setVisible(false);

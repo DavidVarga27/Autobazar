@@ -3,10 +3,10 @@ package sk.upjs.ics.autobazar;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class InzeratOsobne {
+
     private Long idP;
-    
+
     private Long id;
 
     private String znacka;
@@ -16,17 +16,17 @@ public class InzeratOsobne {
     private String rocnik;
 
     private Long objem;
-    
+
     private Long km;
-    
+
     public String palivo;
-    
+
     public String prevodovka;
-    
+
     public Long vykon;
 
     private Date datumPridania;
-    
+
     private Long cena;
 
     public Long getIdP() {
@@ -38,7 +38,10 @@ public class InzeratOsobne {
     }
 
     public String getPalivo() {
-        return palivo;
+        if (idP == 1) {
+            return "Diesel";
+        }
+        return "Benzin";
     }
 
     public Long getKm() {
@@ -76,7 +79,7 @@ public class InzeratOsobne {
     public void setCena(Long cena) {
         this.cena = cena;
     }
-    
+
     private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
 
     public Long getId() {
@@ -129,19 +132,19 @@ public class InzeratOsobne {
 
     @Override
     public String toString() {
-        return this.znacka +" "+ this.model +", Rok vyroby: "+ this.rocnik +", Objem: "+ this.objem+"\n\n";
+        return this.znacka + " " + this.model + ", Rok vyroby: " + this.rocnik + ", Objem: " + this.objem + "\n\n";
     }
-    
+
     public String toString2() {
-        return "Znacka: "+ this.znacka +"\n"+
-                "Model: "+ this.model +"\n"+
-                "Rok vyroby: "+ this.rocnik +"\n"+
-                "Objem: "+ this.objem+"\n"+
-                "Vykon: "+this.vykon+" KW\n"+
-                "Pocet najazdenych kilometrov: "+this.km+"\n"+
-                "Palivo: "+this.getPalivo()+"\n"+
-                "Prevodovka: "+this.getPrevodovka()+"\n"+
-                "Datum pridania: "+ dateFormat.format(this.datumPridania);
+        return "Znacka: " + this.znacka + "\n"
+                + "Model: " + this.model + "\n"
+                + "Rok vyroby: " + this.rocnik + "\n"
+                + "Objem: " + this.objem + "\n"
+                + "Vykon: " + this.vykon + " KW\n"
+                + "Pocet najazdenych kilometrov: " + this.km + "\n"
+                + "Palivo: " + this.getPalivo() + "\n"
+                + "Prevodovka: " + this.getPrevodovka() + "\n"
+                + "Datum pridania: " + dateFormat.format(this.datumPridania);
     }
-    
+
 }

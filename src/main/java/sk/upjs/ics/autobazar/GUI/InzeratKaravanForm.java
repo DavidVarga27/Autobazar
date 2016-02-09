@@ -6,6 +6,9 @@
 package sk.upjs.ics.autobazar.GUI;
 
 import java.awt.Frame;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import sk.upjs.ics.autobazar.InzeratKaravan;
 import sk.upjs.ics.autobazar.InzeratOsobne;
 
@@ -22,7 +25,7 @@ public class InzeratKaravanForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-    
+    JLabel jlab = new JLabel();
     public InzeratKaravanForm(Frame parent, boolean modal, InzeratKaravan inzerat) {
         super(parent, modal);
         initComponents();
@@ -32,6 +35,11 @@ public class InzeratKaravanForm extends javax.swing.JDialog {
         this.inzerat = inzerat;
         inzeratTextArea.setText(inzerat.toString2());
         cenaTextField.setText(inzerat.getCena().toString());
+        if(inzerat.getObrazok()!=null){
+            jlab.setIcon(new ImageIcon(inzerat.getObrazok()));
+        jlab.setHorizontalAlignment(JLabel.CENTER);
+        obrazokPane.getViewport().add(jlab);
+        }
     }
 
     /**
@@ -49,6 +57,7 @@ public class InzeratKaravanForm extends javax.swing.JDialog {
         cenaTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         inzeratTextArea = new javax.swing.JTextArea();
+        obrazokPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,23 +91,31 @@ public class InzeratKaravanForm extends javax.swing.JDialog {
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(cenaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cenaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(euroLabel)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(cenaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cenaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(euroLabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(obrazokPane, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cenaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cenaLabel)
-                        .addComponent(euroLabel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(obrazokPane)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cenaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cenaLabel)
+                            .addComponent(euroLabel)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(spatButton)
@@ -160,6 +177,7 @@ public class InzeratKaravanForm extends javax.swing.JDialog {
     private javax.swing.JLabel euroLabel;
     private javax.swing.JTextArea inzeratTextArea;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane obrazokPane;
     private javax.swing.JButton spatButton;
     // End of variables declaration//GEN-END:variables
 }

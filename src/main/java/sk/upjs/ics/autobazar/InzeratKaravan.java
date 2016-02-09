@@ -5,6 +5,7 @@
  */
 package sk.upjs.ics.autobazar;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -37,6 +38,16 @@ public class InzeratKaravan {
     private Long cena;
 
     private String typ;
+    
+    private byte[] obrazok;
+
+    public byte[] getObrazok() {
+        return obrazok;
+    }
+
+    public void setObrazok(byte[] obrazok) {
+        this.obrazok = obrazok;
+    }
 
     public String getTyp() {
         return typ;

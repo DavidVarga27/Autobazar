@@ -62,7 +62,7 @@ public enum InzeratFactory {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setURL("jdbc:mysql://localhost/autobazar");
         dataSource.setUser("root");
-        dataSource.setPassword("22111994");
+        dataSource.setPassword("271294");
         
         return dataSource;
     }

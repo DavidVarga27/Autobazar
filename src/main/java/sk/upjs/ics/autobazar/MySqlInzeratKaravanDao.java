@@ -24,8 +24,8 @@ public class MySqlInzeratKaravanDao implements InzeratKaravanDao{
 
     @Override
     public void pridat(InzeratKaravan inzerat) {
-        String sql = "INSERT INTO inzeratKaravan VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql,inzerat.getIdP(),null,inzerat.getZnacka(),inzerat.getModel(),inzerat.getRocnik(),inzerat.getKm(),inzerat.getObjem(),inzerat.getPrevodovka(),inzerat.getVykon(),inzerat.getDatumPridania(), inzerat.getCena(),inzerat.getTyp(),inzerat.isHmotnost());
+        String sql = "INSERT INTO inzeratKaravan VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql,inzerat.getIdP(),null,inzerat.getZnacka(),inzerat.getModel(),inzerat.getRocnik(),inzerat.getKm(),inzerat.getObjem(),inzerat.getPrevodovka(),inzerat.getVykon(),inzerat.getDatumPridania(), inzerat.getCena(),inzerat.getTyp(),inzerat.isHmotnost(),inzerat.getObrazok());
     }
 
     @Override
